@@ -1,8 +1,12 @@
 import axios from 'axios'
 
 export default() => {
-  axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
   return axios.create({
-    baseURL: `http://localhost:5000/api`
+    baseURL: `http://localhost:5000/api`,
+    headers: {
+      common: {
+        Authorization: localStorage.getItem('jwtToken')
+      }
+    }
   });
 }
