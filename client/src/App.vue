@@ -1,18 +1,14 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <BookComponent />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import BookComponent from './components/BookComponent.vue'
 
 export default {
-  name: 'App',
-  components: {
-    BookComponent
-  }
+  name: 'App'
 }
 </script>
 
