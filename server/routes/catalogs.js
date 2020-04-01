@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-let Book = require('../models/Book');
 let Catalog = require('../models/Catalog');
 
 var passport = require('passport');
 require('../config/passport')(passport);
 
-//Get Books
+//Get Catalogs
 router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   let token = getToken(req.headers);
   if (token) {
-    Book.find((err, books) => {
+    Catalog.find((err, catalogs) => {
       if (err) {
         res.json(err);
       } else {
-        res.json(books);
+        res.json(catalogs);
       }
     });
   } else {
@@ -22,12 +21,12 @@ router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   }
 });
 
-//Add Book
+//Add Catalog
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   let token = getToken(req.headers);
   if (token) {
-    let book = new Book(req.body);
-    book.save()
+    let catalog = new Catalog(req.body);
+    catalog.save()
       .then(() => {
         res.status(201).send();
       })
@@ -40,11 +39,11 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
   }
 });
 
-//Delete Book
+//Delete Catalog
 router.delete('/:id', passport.authenticate('jwt', { session: false}), (req, res) => {
   let token = getToken(req.headers);
   if (token) {
-    Book.findByIdAndRemove({_id: req.params.id}, function(err){
+    Catalog.findByIdAndRemove({_id: req.params.id}, function(err){
       if(err) res.json(err);
       else res.json('Successfully removed');
     });

@@ -12,14 +12,14 @@
                   :label-cols="4"
                   breakpoint="md"
                   label="Enter Username">
-          <b-form-input id="username" :state="state" v-model.trim="login.username"></b-form-input>
+          <b-form-input id="username" v-model.trim="login.username"></b-form-input>
         </b-form-group>
         <b-form-group id="fieldsetHorizontal"
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
                   label="Enter Password">
-          <b-form-input type="password" id="password" :state="state" v-model.trim="login.password"></b-form-input>
+          <b-form-input type="password" id="password" v-model.trim="login.password"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Login</b-button>
         <b-button type="button" variant="success" @click.stop="register()">Register</b-button>

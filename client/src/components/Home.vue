@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     hello
+    <b-link @click="logout()">Logout</b-link>
   </div>
 </template>
 
@@ -10,6 +11,14 @@ export default {
   data() {
     return {
 
+    }
+  },
+  methods: {
+    logout () {
+      localStorage.removeItem('jwtToken');
+      this.$router.push({
+        name: 'Login'
+      })
     }
   }
 }
