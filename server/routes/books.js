@@ -22,6 +22,22 @@ router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   }
 });
 
+//Get one book
+router.get('/:id', passport.authenticate('jwt', { session: false}), (req, res) => {
+  let token = getToken(req.headers);
+  if (token) {
+    Book.findById(req.params.id).populate('catalog').exec((err, book) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(book);
+      }
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
 //Add Book
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   let token = getToken(req.headers);

@@ -18,8 +18,8 @@
         <template v-slot:head(more)>
           <div class="text-nowrap">Подробнее</div>
         </template>
-        <template v-slot:cell(more)>
-          <b-button size="sm" class="mr-2">
+        <template v-slot:cell(more)="{ item }">
+          <b-button size="sm" class="mr-2" @click="openBookInfo(item._id)">
             Подробнее
           </b-button>
         </template>
@@ -46,6 +46,9 @@ export default {
     async getBooks () {
       const response = await BooksService.fetchBooks();
       this.books = response.data;
+    },
+    openBookInfo(id) {
+      this.$router.push({path: `/books/${id}`});
     }
   }
 }

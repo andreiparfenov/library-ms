@@ -5,6 +5,10 @@ export default {
     return Api().get('books')
   },
 
+  fetchOneBook(id) {
+    return Api().get(`books/${id}`)
+  },
+
   addBook(params) {
     return Api().post('books', params)
   },
