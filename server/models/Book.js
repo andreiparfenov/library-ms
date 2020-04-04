@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-let Catalog = require('./Catalog');
 
 // Define collection and schema for Book
 let Book = new Schema({

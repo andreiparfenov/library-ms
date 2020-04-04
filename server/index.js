@@ -19,10 +19,12 @@ app.use(cors());
 const auth = require('./routes/auth');
 const books = require('./routes/books');
 const catalogs = require('./routes/catalogs');
+const readers = require('./routes/readers');
 
 app.use('/api/auth', auth);
 app.use('/api/books', books);
 app.use('/api/catalogs', catalogs);
+app.use('/api/readers', readers);
 
 const port = process.env.PORT || 5000;
 

@@ -15,6 +15,9 @@
         <template v-slot:head(publisher)>
           <div class="text-nowrap">Издатель</div>
         </template>
+        <template v-slot:head(status)>
+          <div class="text-nowrap">Статус</div>
+        </template>
         <template v-slot:head(more)>
           <div class="text-nowrap">Подробнее</div>
         </template>
@@ -36,7 +39,7 @@ export default {
   data () {
     return {
       books: [],
-      fields: ['isbn', 'title', 'author', 'publisher', 'more']
+      fields: ['isbn', 'title', 'author', 'publisher', 'status', 'more']
     }
   },
   mounted () {
