@@ -10,11 +10,26 @@ require('../config/passport')(passport);
 router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
   let token = getToken(req.headers);
   if (token) {
-    Reader.find((err, books) => {
+    Reader.find((err, readers) => {
       if (err) {
         res.json(err);
       } else {
-        res.json(books);
+        res.json(readers);
+      }
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/:id', passport.authenticate('jwt', { session: false}), (req, res) => {
+  let token = getToken(req.headers);
+  if (token) {
+    Reader.findById(req.params.id).exec((err, reader) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(reader);
       }
     });
   } else {
@@ -38,5 +53,19 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
+getToken = function (headers) {
+  if (headers && headers.authorization) {
+    var parted = headers.authorization.split(' ');
+    if (parted.length === 2) {
+      return parted[1];
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+};
+
 
 module.exports = router;

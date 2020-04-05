@@ -7,5 +7,9 @@ export default {
 
   addReader(params) {
     return Api().post('readers', params)
+  },
+
+  fetchOneReader(id) {
+    return Api().get(`readers/${id}`)
   }
 }

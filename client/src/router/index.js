@@ -6,6 +6,7 @@ import BookInfo from '@/components/BookInfo'
 import BookForm from '@/components/BookForm'
 import Catalogs from '@/components/Catalogs'
 import Readers from '@/components/Readers'
+import ReaderCard from '@/components/ReaderCard'
 
 import Login from '@/components/Login'
 import Register from '@/components/Register'
@@ -55,6 +56,12 @@ export default new Router({
       path: '/readers',
       name: 'Readers',
       component: Readers
+    },
+    {
+      path: '/readers/:id',
+      name: 'ReaderCard',
+      component: ReaderCard,
+      props: true
     }
   ]
 });

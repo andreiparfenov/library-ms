@@ -19,5 +19,9 @@ export default {
 
   addCatalog(params) {
     return Api().post('catalogs', params)
+  },
+
+  borrowBooks(params) {
+    return Api().post('/borrow', params)
   }
 }

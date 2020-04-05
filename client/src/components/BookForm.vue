@@ -125,7 +125,7 @@ export default {
     },
     onSubmit (evt) {
       evt.preventDefault();
-      let catalog = this.catalogs.filter(cat => cat.name = this.bookData.catalog);
+      let catalog = this.catalogs.filter(cat => cat.name === this.bookData.catalog);
       this.bookData.catalog = catalog[0]._id;
       BooksService.addBook(this.bookData)
       .then(() => {
